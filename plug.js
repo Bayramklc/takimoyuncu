@@ -881,7 +881,7 @@ var words = {
 "Performance":"Performans",
 "Dancing Avatars":"Avatarların Dans'ı",
 "Cap Avatars":"Odadaki Avatar Sayısı",
-"BEHAVIOR":"DAVRANIŞ"
+"BEHAVIOR":"DAVRANIŞ",
 "Show Tooltips":"İpuçlarını göster",
 "DJ Score After Play":"Şarkı Sonu Skorunu Göster",
 "DJ Announcements":"DJ Duyuruları",
