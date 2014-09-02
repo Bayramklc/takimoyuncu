@@ -1,8 +1,3 @@
-/*
-    Copyright (c) 2013-2014 by Olivier Houle (Fungus)
-    Please do not copy or modify without my permission.
-*/
-
 SockJS.prototype.msg = function(a){this.send(JSON.stringify(a))};
 Array.prototype.isArray = true;
 var tastyPlugShutDown;
