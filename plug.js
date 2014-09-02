@@ -923,3 +923,4 @@ for(var i=0,l=texts.snapshotLength; (this_text=texts.snapshotItem(i)); i++) {
 	}
 	}
 }
+
