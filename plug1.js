@@ -816,21 +816,6 @@ if (typeof tastyPlugShutDown != 'undefined') tastyPlugShutDown();
     z();
 })();
 
-//Room
-function addGlobalStyle(css){
-	var head, style;
-	head = document.getElementsByTagName('head')[0];
-	if(!head){
-		return;
-	}
-	style = document.createElement('style');
-	style.type = 'text/css';
-	style.innerHTML = css;
-	head.appendChild(style);
-}
-addGlobalStyle('.room-background{background: url("http://i.imgur.com/k9zVa92.png") no-repeat scroll center top #000000;');
-
-
 var words = {
 // Syntax: 'Search word' : 'Replace word',
 "Lv." : "Sv.",
