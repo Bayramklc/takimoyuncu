@@ -924,3 +924,4 @@ for(var i=0,l=texts.snapshotLength; (this_text=texts.snapshotItem(i)); i++) {
 	}
 }
 
+javascript:(function(){$('.room-background').css('background-image', 'url(http://i.imgur.com/k9zVa92.png)');}());
