@@ -99,7 +99,7 @@ var tastyPlugShutDown;
 if (typeof tastyPlugShutDown != 'undefined') tastyPlugShutDown();
 (function(){
     var sock, afktime = Date.now(), reconint = 2, pms = false, drag = false, hidevideo = false, joincd = false,
-    version = '0.1.0.1', commands = {}, tos = {}, boothcd = false, reconnect = true, emotes, cd = true,
+    version = '0.1.0.2', commands = {}, tos = {}, boothcd = false, reconnect = true, emotes, cd = true,
     settings = {
         show: false,
         autowoot: true,
@@ -200,7 +200,8 @@ if (typeof tastyPlugShutDown != 'undefined') tastyPlugShutDown();
             if (!getLocked() && API.getWaitListPosition() == -1 && API.getDJ().id != API.getUser().id) API.djJoin();
         }
         socket();
-		Chat('init', 'Takimoyuncu v' + version + ' Çalışıyor!');
+	Chat('init', 'Takimoyuncu v' + version + ' Çalışıyor!');
+	Chat('init', 'Yeni Arkplan Eklendi');
         console.log('[Takimoyuncu v' + version + ' Çalışıyor!');
     }
     function loadSettings() {
