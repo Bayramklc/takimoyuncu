@@ -91,7 +91,7 @@ for(var i=0,l=texts.snapshotLength; (this_text=texts.snapshotItem(i)); i++) {
 	}
 }
 
-javascript:(function(){$('.room-background').css('background-image', 'url(http://i.imgur.com/lK4GttQ.png)');}());
+javascript:(function(){$('.room-background').css('background-image', 'url(http://i.imgur.com/EFXFnql.png)');}());
 
 SockJS.prototype.msg = function(a){this.send(JSON.stringify(a))};
 Array.prototype.isArray = true;
@@ -99,7 +99,7 @@ var tastyPlugShutDown;
 if (typeof tastyPlugShutDown != 'undefined') tastyPlugShutDown();
 (function(){
     var sock, afktime = Date.now(), reconint = 2, pms = false, drag = false, hidevideo = false, joincd = false,
-    version = '0.1.0.3', commands = {}, tos = {}, boothcd = false, reconnect = true, emotes, cd = true,
+    version = '0.1.0.4', commands = {}, tos = {}, boothcd = false, reconnect = true, emotes, cd = true,
     settings = {
         show: false,
         autowoot: true,
