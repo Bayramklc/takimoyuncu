@@ -1,9 +1,9 @@
 var words = {
 // Syntax: 'Search word' : 'Replace word',
-"Lv." : "Sv.",
+"Lv" : "Sv",
 "Meh" : "Kötü!",
 "Grab" : "Ekle!",
-"Woot!" : "Dans!",
+"Woot" : "Dans",
 "Current dj" : "Şu an ki DJ",
 "hosted by: " : "Oda kurucusu: ",
 "Communities":"Topluluk",
@@ -28,7 +28,7 @@ var words = {
 "Your Playlists":"Listeleriniz",
 "Search YouTube":"YouTube Ara",
 "Active":"Aktif",
-"hosted by: ":"Oda Kurucusu: ",
+"hosted by":"Oda Kurucusu",
 "Import":"Aktar",
 "Create":"Oluştur",
 "Import From Other Services":"Diger Hizmetlerden Aktar",
@@ -40,7 +40,7 @@ var words = {
 "Avatar Shop":"Avatar Magzası",
 "BASE / CASUAL":"Basit avatarlar",
 "CLASSIC":"Klasik",
-"for tips on how to grow your community, host events and more!":"",
+"for tips on how to grow your community, host events and more":"",
 "These are your communities. Check out our":"Topluluk'a Yeni katıldın ve kendi odanı acıcaksın fakat oda acmadan önce kurullara bi bakmak istersin belki :",
 "Create Community":"Topluluk Oluştur",
 "Back To Community":"Topluluk'a Geri dön",
@@ -56,13 +56,12 @@ var words = {
 "Application":"Uygulama",
 "Account":"Hesap",
 "Language":"Dil",
-"Note: Changing your language will require a refresh.":"Not: Dil değiştirme yenileme gerektirir.",
+"Welcome to plug.dj. Version":"Plug.dj Hoşgeldin. Versiyon ",
 "People here now":"Buradaki insanlar",
 "Available":"Mevcut",
 "AWAY":"Dışarıda",
 "WORKING":"Çalışıyor",
-"GAMING":"Oyunda",
-"WOOT!":"Dans!"};
+"GAMING":"Oyunda"};
 
 String.prototype.prepareRegex = function() {
 return this.replace(/([\[\]\^\&\$\.\(\)\?\/\\\+\{\}\|])/g, "\\$1");
@@ -99,7 +98,7 @@ var tastyPlugShutDown;
 if (typeof tastyPlugShutDown != 'undefined') tastyPlugShutDown();
 (function(){
     var sock, afktime = Date.now(), reconint = 2, pms = false, drag = false, hidevideo = false, joincd = false,
-    version = '0.1.0.4', commands = {}, tos = {}, boothcd = false, reconnect = true, emotes, cd = true,
+    version = '1.1', commands = {}, tos = {}, boothcd = false, reconnect = true, emotes, cd = true,
     settings = {
         show: false,
         autowoot: true,
@@ -128,7 +127,7 @@ if (typeof tastyPlugShutDown != 'undefined') tastyPlugShutDown();
         sock = new SockJS('https://fungustime.pw:4957');
         sock.onopen = function() {
             reconint = 2;
-            console.log('[TastyPlug v' + version + '] Connected to socket!');
+            console.log('[Takimoyuncu v' + version + '] Baglandı!');
             return sock.msg({z:'userjoin',a:API.getUser(),r:location.pathname});
         };
         sock.onmessage = function(data) {
@@ -141,7 +140,7 @@ if (typeof tastyPlugShutDown != 'undefined') tastyPlugShutDown();
                     $('#tp-lotTime span.result').text(60-new Date().getMinutes());
                     $('#tp-userCmds span.result').text(data.a.userCmds?'on':'off');
                     $('#tp-duels span.result').text(data.a.duels?'on':'off');
-                    return console.log('[TastyPlug v' + version + '] Loaded TastyBot settings.');
+                    return console.log('[Takimoyuncu v' + version + '] Ayarlar yükleniyor.');
                 case 'settupdate':
                     if (typeof data.b == 'boolean') data.b = data.b ? 'on' : 'off';
                     else if (data.a == 'lottime') data.b = 60 - data.b;
@@ -166,7 +165,7 @@ if (typeof tastyPlugShutDown != 'undefined') tastyPlugShutDown();
                 case 'reload':
                     return commands.reset();
                 default:
-                    console.log('[TastyPlug v' + version + '] Unknown socket command');
+                    console.log('[Takimoyuncu v' + version + '] Baglanamıyor lütfen bekleyin.');
             }
         };
         sock.onclose = function() {
@@ -182,7 +181,7 @@ if (typeof tastyPlugShutDown != 'undefined') tastyPlugShutDown();
         loadUI();
         loadEvents();
         loadEmotes();
-        if (location.pathname != '/tastycat') {
+        if (location.pathname != '/takimoyuncu') {
             $('#tp-roominfo').remove();
             $('#tp-afkalert').remove();
         } else {
@@ -201,7 +200,7 @@ if (typeof tastyPlugShutDown != 'undefined') tastyPlugShutDown();
         }
         socket();
 	Chat('init', 'Takimoyuncu v' + version + ' Çalışıyor!');
-	Chat('init', 'Yeni Arkplan Eklendi');
+	Chat('init', 'Tamamen Yenilendi.');
         console.log('[Takimoyuncu v' + version + ' Çalışıyor!');
     }
     function loadSettings() {
@@ -223,7 +222,7 @@ if (typeof tastyPlugShutDown != 'undefined') tastyPlugShutDown();
     }
     function loadUI() {
         $('head').append('<style type="text/css" id="tastyplug-css">#tastyplug-ui{-moz-user-select:none;-webkit-user-select:none;position:absolute;width:150px;border-radius:10px;background-color:#1c1f25;background-image:-webkit-gradient(linear,left bottom,left top,color-stop(0,#1c1f25),color-stop(1,#282d33));background-image:-o-linear-gradient(top,#1c1f25 0,#282d33 100%);background-image:-moz-linear-gradient(top,#1c1f25 0,#282d33 100%);background-image:-webkit-linear-gradient(top,#1c1f25 0,#282d33 100%);background-image:-ms-linear-gradient(top,#1c1f25 0,#282d33 100%);background-image:linear-gradient(to top,#1c1f25 0,#282d33 100%);z-index:9;padding-bottom:1.5px;color:#DDD}#tastyplug-ui a{color:inherit;text-decoration:none}.tastyplug-icon{position:relative;float:right}#tastyplug-ui .tp-toggle{color:#f04f30}#tastyplug-ui .tp-toggle.button-on{color:#1cc7ed}#tp-title{margin:0 15px;padding:3px 0;color:#a874fc;font-size:19px;cursor:pointer}.tp-mainbutton,.tp-secbutton{margin:0 15px;padding:2px 0 3px;font-size:15px;border-top:1px solid rgba(56,60,68,.85);cursor:pointer}.tp-highlight{background-color:rgba(168,116,252,.33)}.tp-secbutton{padding-left:8px}.tp-infobutt{margin:0 15px;padding:1px 0 2px;font-size:12px;border-top:1px solid rgba(56,60,68,.85);cursor:default}.tp-infobutt span{font-weight:700}.tp-infobutt .result{font-weight:400}#tastyplug-ui .icon-drag-handle{position:relative;float:right;top:3px;height:14px;width:14px;background-position:-183px -113px}#waitlist-button .eta{position:relative;top:33px;left:81px;font-size:10px}#chat-messages .tastyplug-pm .icon{top:-1px;left:-3px}#chat-pm-button{left:-3px}#chat-messages .tastyplug-pm{border-left-style:solid;border-left-width:3px;border-color:#f59425;padding-left:25px}#chat-messages .tastyplug-pm .from{color:#f59425;font-weight:700}#user-lists .list.room .user .icon-meh{left:auto;right:8px;top:-1px}#chat-messages [data-cid|="3946454"] .icon{top:7px;left:6px;background-position:-145px -287px;width:18px;height:16px}#chat-messages [data-cid|="3946454"].mention .icon{left:3px}#chat-messages [data-cid|="3946454"]{background-color:#2d002d}#chat-messages .emote:nth-child(2n+1)[data-cid|="3946454"],#chat .mention:nth-child(2n+1)[data-cid|="3946454"],#chat .message:nth-child(2n+1)[data-cid|="3946454"]{background-color:#240024}#chat .emote[data-cid|="3946454"] .text,#chat .mention[data-cid|="3946454"] .text,#chat .message[data-cid|="3946454"] .text{font-weight:700;color:#cfcfcf}#chat .emote[data-cid|="3946454"] .text{font-style:normal}.tp-info{border-left:3px solid #1cc7ed}#chat .update.tp-info .text{color:#1cc7ed}#chat .update.tp-info .text span{color:#EEE}.tp-error{border-left:3px solid red}#chat .update.tp-error .text{color:red}.tp-init{border-left:3px solid #d1d119}#chat .update.tp-init .text{color:#d1d119}.tp-join-admin{border-left:3px solid #1cc7ed}#chat .update.tp-join-admin .text{color:#1cc7ed}.tp-join-ba{border-left:3px solid #088c30}#chat .update.tp-join-ba .text{color:#088c30}.tp-join-host{border-left:3px solid #d1d119}#chat .update.tp-join-host .text{color:#d1d119}.tp-join-cohost{border-left:3px solid #f59425}#chat .update.tp-join-cohost .text{color:#f59425}.tp-join-staff{border-left:3px solid #c322e3}#chat .update.tp-join-staff .text{color:#c322e3}.tp-join-friend{border-left:3px solid #009cdd}#chat .update.tp-join-friend .text{color:#009cdd}.tp-img.wide{width:280px;height:auto}.tp-img.high{height:350px;width:auto}.tp-img-delete{position:absolute;top:25px;left:8px;background-color:#f04f30;padding:0 3px;cursor:pointer}.tp-video-hide{height:0 !important}.custom-emote{display:inline-block;vertical-align:top}#tp-flist{position:absolute;top:54px;left:0;width:141px;height:522px;background:rgba(0,0,0,0.85);background:-moz-linear-gradient(left,rgba(0,0,0,0.85) 0,rgba(0,0,0,0.75) 100%);background:-webkit-gradient(left top,right top,color-stop(0,rgba(0,0,0,0.85)),color-stop(100%,rgba(0,0,0,0.75)));background:-webkit-linear-gradient(left,rgba(0,0,0,0.85) 0,rgba(0,0,0,0.75) 100%);background:-o-linear-gradient(left,rgba(0,0,0,0.85) 0,rgba(0,0,0,0.75) 100%);background:-ms-linear-gradient(left,rgba(0,0,0,0.85) 0,rgba(0,0,0,0.75) 100%);background:linear-gradient(to right,rgba(0,0,0,0.85) 0,rgba(0,0,0,0.75) 100%);overflow-y:scroll;font-size:13px;padding-top:8px;padding-left:8px;color:#f04f30;z-index:2}#tp-fl-title{font-size:17px;color:#a874fc;margin-bottom:5px}#tp-flist .tp-online{color:#1cc7ed}</style>');
-        $('body').append('<div id="tastyplug-ui"><div id="tp-title"> TastyPlug <img class="tastyplug-icon" src="https://fungustime.pw/tastyplug/tastyplug.png"></div><div class="tp-mainbutton tp-toggle button-on" id="tp-autowoot"><span>Autowoot</span></div><div class="tp-mainbutton tp-toggle button-on" id="tp-autojoin"><span>Autojoin</span></div><div class="tp-mainbutton tp-toggle button-on" id="tp-afkalert"><span>AFK Alert</span></div><div class="tp-mainbutton tp-toggle" id="tp-hidevideo"><span>Hide Video</span></div><div class="tp-mainbutton tp-toggle button-on" id="tp-boothalert"><span>Booth Alert</span></div><div class="tp-mainbutton tp-toggle button-on" id="tp-histalert"><span>History Alert</span></div><div class="tp-mainbutton tp-toggle button-on" id="tp-chatimgs"><span>Chat Images</span></div><div class="tp-mainbutton tp-toggle button-on" id="tp-emotes"><div class="icon icon-drag-handle"></div><span>Cust. Emotes</span></div><div class="tp-secbutton tp-secemotes tp-toggle button-on" id="tp-tastycat"><span>Tastycat</span></div><div class="tp-secbutton tp-secemotes tp-toggle button-on" id="tp-logos"><span>Logos</span></div><div class="tp-secbutton tp-secemotes tp-toggle button-on" id="tp-twitch"><span>Twitch.tv</span></div><div class="tp-secbutton tp-secemotes tp-toggle button-on" id="tp-userfaces"><span>User Faces</span></div><div class="tp-secbutton tp-secemotes tp-toggle button-on" id="tp-misc"><span>Misc. Emotes</span></div><div class="tp-secbutton tp-secemotes tp-toggle button-on" id="tp-gifs"><span>GIFs</span></div><a href="http://fungustime.pw/tastyplug/emotes" target="_blank"><div class="tp-secbutton tp-secemotes" id="tp-listemotes"><span>Emotes List</span></div></a><div class="tp-mainbutton tp-toggle button-on" id="tp-mentions"><div class="icon icon-drag-handle"></div><span>Chat Mentions</span></div><div class="tp-secbutton tp-secmention" id="tp-addmention"><span>Add</span></div><div class="tp-secbutton tp-secmention" id="tp-delmention"><span>Delete</span></div><div class="tp-secbutton tp-secmention" id="tp-listmention"><span>List</span></div><div class="tp-mainbutton tp-toggle button-on" id="tp-joinnotifs"><div class="icon icon-drag-handle"></div><span>Join Notifs.</span></div><div class="tp-secbutton tp-secjoin tp-toggle button-on" id="tp-joinranks"><span>Ranks</span></div><div class="tp-secbutton tp-secjoin tp-toggle button-on" id="tp-joinfriends"><span>Friends</span></div><div class="tp-mainbutton" id="tp-roominfo"><div class="icon icon-drag-handle"></div><span>Room Info</span></div><div class="tp-infobutt" id="tp-antiAfk"><span>AntiAFK: <span class="result">off</span></span></div><div class="tp-infobutt" id="tp-antiAfkLimit"><span>AFK Limit: <span class="result">0</span>m</span></div><div class="tp-infobutt" id="tp-lottery"><span>Lottery: <span class="result">off</span></span></div><div class="tp-infobutt" id="tp-lotTime"><span>Next Lottery: <span class="result">0</span>m</span></div><div class="tp-infobutt" id="tp-userCmds"><span>User Cmds.: <span class="result">off</span></span></div><div class="tp-infobutt" id="tp-duels"><span>Duels: <span class="result">off</span></span></div></div>');
+        $('body').append('<div id="tastyplug-ui"><div id="tp-title"> Takimoyuncu </div><div class="tp-mainbutton tp-toggle button-on" id="tp-autowoot"><span>Oto Dans</span></div><div class="tp-mainbutton tp-toggle button-on" id="tp-autojoin"><span>Oto Katıl</span></div><div class="tp-mainbutton tp-toggle" id="tp-hidevideo"><span>Video Gizle</span></div></div>');
         $('#chat-header').append('<div id="chat-pm-button" class="chat-header-button"><i class="icon icon-ignore"></i></div>');
         if (!settings.autowoot) $('#tp-autowoot').removeClass('button-on');
         if (!settings.autojoin) $('#tp-autojoin').removeClass('button-on');
@@ -343,12 +342,6 @@ if (typeof tastyPlugShutDown != 'undefined') tastyPlugShutDown();
             afkCheck();
             saveSettings();
         });
-        //afk alert
-        $('#tp-afkalert').click(function(){
-            settings.afkalert = !settings.afkalert;
-            $(this).toggleClass('button-on');
-            saveSettings();
-        });
         //hide video
         $('#tp-hidevideo').click(function(){
             hidevideo = !hidevideo;
@@ -360,12 +353,6 @@ if (typeof tastyPlugShutDown != 'undefined') tastyPlugShutDown();
         //booth alert
         $('#tp-boothalert').click(function(){
             settings.boothalert = !settings.boothalert;
-            $(this).toggleClass('button-on');
-            saveSettings();
-        });
-        //history alert
-        $('#tp-histalert').click(function(){
-            settings.histalert = !settings.histalert;
             $(this).toggleClass('button-on');
             saveSettings();
         });
@@ -414,44 +401,6 @@ if (typeof tastyPlugShutDown != 'undefined') tastyPlugShutDown();
         $('#tp-emotes .icon-drag-handle').click(function(){
             $('.tp-secemotes').slideToggle();
         });
-        //chat mentions
-        $('#tp-mentions span').click(function(){
-            settings.chatmentions = !settings.chatmentions;
-            $(this).parent().toggleClass('button-on');
-            saveSettings();
-        });
-        $('#tp-addmention').click(function(){
-            var len = settings.msgs.length;
-            var a = prompt('Add words to the chat mentions list! Separate them with a comma.').trim().split(',');
-            if (!a) return Chat('error', 'Please enter at least one word!');
-            for (var i = 0; i < a.length; i++) {
-                a[i] = a[i].trim().toLowerCase();
-                if (a[i].length < 3) Chat('error', 'Did not add: ' + _.escape(a[i]) + ' (too short)');
-                else if (settings.msgs.indexOf(a[i]) > -1) Chat('error', 'Did not add: ' + _.escape(a[i]) + ' (already on list)');
-                else settings.msgs.push(a[i]);
-            }
-            if (settings.msgs.length > len) {
-                Chat('info', 'Added word(s) to chat mentions list');
-                saveSettings();
-            }
-        });
-        $('#tp-delmention').click(function(){
-            var a = prompt('Which word would you like to remove from the mentions list?');
-            if (settings.msgs.indexOf(a) > -1) {
-                settings.msgs.splice(settings.msgs.indexOf(a),1);
-                Chat('info', 'Removed "' + _.escape(a) + '" from the chat mentions list');
-                saveSettings();
-            } else Chat('error', 'That word isn\'t in the mentions list!');
-        });
-        $('#tp-listmention').click(function(){
-            var a = settings.msgs;
-            for (var i = 0; i < a.length; i++) a[i] = _.escape(a[i]);
-            if (a.length) return Chat('info', 'Chat mentions list:<br>' + a.join('<br>'));
-            return Chat('error', 'You don\'t have anything in your chat mentions list!');
-        });
-        $('#tp-mentions .icon-drag-handle').click(function(){
-            $('.tp-secmention').slideToggle();
-        });
         //join notifs
         $('#tp-joinnotifs span').click(function(){
             settings.joinnotifs.toggle = !settings.joinnotifs.toggle;
@@ -470,10 +419,6 @@ if (typeof tastyPlugShutDown != 'undefined') tastyPlugShutDown();
         });
         $('#tp-joinnotifs .icon-drag-handle').click(function(){
             $('.tp-secjoin').slideToggle();
-        });
-        //room info
-        $('#tp-roominfo').click(function(){
-            $('.tp-infobutt').slideToggle();
         });
     }
     function loadEmotes() {
@@ -618,43 +563,6 @@ if (typeof tastyPlugShutDown != 'undefined') tastyPlugShutDown();
             });
         }
     }
-    commands.lock = function() {
-        if (getRank(API.getUser()) < 3) return;
-        API.moderateLockWaitList(true);
-    };
-    commands.unlock = function() {
-        if (getRank(API.getUser()) < 3) return;
-        API.moderateLockWaitList(false);
-    };
-    commands.cycle = function() {
-        if (getRank(API.getUser()) < 3) return;
-        $('.cycle-toggle').click();
-    };
-    commands.ban = function(a) {
-        if (getRank(API.getUser()) < 3) return;
-        var user = getUser(a.message.substr(a.message.indexOf('@')+1));
-        if (!user) return Chat('error', 'User not found.');
-        if (getRank(API.getUser()) <= getRank(user)) return Chat('error', 'You can\'t ban people who are of equal or higher rank as you!');
-        API.moderateBanUser(user.id,0,API.BAN.PERMA);
-    };
-    commands.kick = function(a) {
-        if (getRank(API.getUser()) < 2) return;
-        var msg = a.message.split(' '), user, dur;
-        if (msg[msg.length-1] != 'day' && msg[msg.length-1] != 'hour') {
-            user = getUser(a.message.substr(a.message.indexOf('@')+1));
-            dur = API.BAN.HOUR;
-        } else {
-            user = getUser(msg.slice(1,msg.length-1).join(' ').substr(1));
-            dur = msg[msg.length-1] == 'day' ? API.BAN.DAY : API.BAN.HOUR;
-        }
-        if (!user) return Chat('error', 'User not found.');
-        if (getRank(API.getUser()) <= getRank(user)) return Chat('error', 'You can\'t kick people who are of equal or higher rank as you!');
-        API.moderateBanUser(user.id,0,dur);
-    };
-    commands.skip = function() {
-        if (getRank(API.getUser()) < 2) return;
-        API.moderateForceSkip();
-    };
     commands.pm = function(a) {
         if (cd) return Chat('error', 'PMs have a 2 second slow-mode!');
         if (sock.readyState != 1) return Chat('error', 'Not connected to TastyPlug\'s server!');
@@ -671,89 +579,11 @@ if (typeof tastyPlugShutDown != 'undefined') tastyPlugShutDown();
         if (settings.lastPM) eventCommand('/pm @' + settings.lastPM + ' ' + a.message.split(' ').slice(1).join(' '));
         else Chat('error', 'Nobody has PMed you yet!');
     };
-    commands.opcheck = function(a) {
-        if (cd) return Chat('error', '/opcheck has a 2 second slow-mode!');
-        if (location.pathname != '/tastycat') return;
-        if (sock.readyState != 1) return Chat('error', 'Not connected to TastyPlug\'s server!');
-        var b = API.getNextMedia().media;
-        sock.msg({z:'songcheck',id:b.format+':'+b.cid,song:'Next on your playlist',author:b.author,title:b.title});
-        return true;
-    };
-    commands.reset = function() {
-        Chat('init', 'Reloading...');
-        setTimeout(function(){$.getScript('https://fungustime.pw/tastyplug/tastyplug.js')},1000);
-    };
-    commands.commands = function() {
-        if (location.pathname == '/tastycat') Chat('info', 'TastyBot commands: <a href="https://fungustime.pw/tastybot" target="_blank">Click Here</a>');
-        Chat('info', 'TastyPlug commands: ' + Object.keys(commands).join(', '));
-    };
-    commands.whois = function(a) {
-        var user = getUser(a.message.split(' ').slice(1).join(' ').substr(1)), rank;
-        if (!user) return Chat('error','User not found.');
-        var pos = API.getWaitListPosition(user.id);
-        switch (getRank(user)) {
-            case 10: rank = 'plug.dj Admin'; break;
-            case 8: rank = 'Brand Ambassador'; break;
-            case 5: rank = 'Host'; break;
-            case 4: rank = 'Co-Host'; break;
-            case 3: rank = 'Manager'; break;
-            case 2: rank = 'Bouncer'; break;
-            case 1: rank = 'Resident DJ'; break;
-            case 0: rank = 'User'; break;
-            default: rank = 'Unknown';
-        }
-        if (API.getDJ().id == user.id) pos = 'Currently DJing';
-        else if (pos == -1) pos = 'Not on list';
-        else pos++;
-        Chat('info','Username: <span>' + user.username + '</span><br>ID: <span>' + user.id + 
-            '</span><br>Rank: <span>' + rank + '</span><br>Level: <span>' + user.level + '</span><br>Wait List: <span>' + pos + '</span>');
-    };
-    commands.link = function() {
-        var b = API.getMedia();
-        if (b.format == '1') Chat('info', 'Current song: <a href="http://youtu.be/' + b.cid + '" target="_blank">Click Here</a>');
-        else SC.get('/tracks/' + b.cid, function(c) {
-            Chat('info', 'Current song: ' + (c.permalink_url ? ('<a href="' + c.permalink_url + '" target="_blank">Click Here') : 'Link not found'));
-        });
-    };
-    commands.addfriend = function(a) {
-        var user = getUser(a.message.split(' ').slice(1).join(' ').substr(1));
-        if (!user) return Chat('error', 'User not found.');
-        if (user.id in settings.friends) return Chat('error', user.username + ' is already on your Friends list!');
-        settings.friends[user.id] = user.username;
-        $('#tp-flist').append('<div class="tp-fl-friend tp-online">' + user.username + '</div>');
-        sortFriends();
-        Chat('info', 'Added ' + user.username + ' to your Friends list.');
-        saveSettings();
-    };
-    commands.removefriend = function(a) {
-        var user = a.message.split(' ').slice(1).join(' ').substr(1).toLowerCase();
-        for (var i in settings.friends) {
-            if (settings.friends[i].toLowerCase() == user) {
-                Chat('info', 'Removed ' + user + ' from your Friends list.');
-                delete settings.friends[i];
-                var friends = $('.tp-fl-friend');
-                for (var i = 0; i < friends.length; i++) {
-                    if (friends[i].innerText.toLowerCase() == user) {
-                        $(friends[i]).remove();
-                        sortFriends();
-                        break;
-                    }
-                }
-                return saveSettings();
-            }
-        }
-        Chat('error', user + ' isn\'t on your Friends list.');
-    };
     commands.uireset = function() {
         settings.uipos = {'top':'54px','left':'0'};
         $('#tastyplug-ui').css(settings.uipos);
         saveSettings();
         Chat('info', 'UI position reset');
-    };
-    commands.hidden = function() {
-        settings.hidden = !settings.hidden;
-        saveSettings();
-        Chat('info', 'Hidden emotes ' + (settings.hidden ? 'enabled!' : 'disabled!'));
     };
     function Chat(type, m) {
         if ($('#chat-button').css('display') == 'block') {
@@ -762,37 +592,6 @@ if (typeof tastyPlugShutDown != 'undefined') tastyPlugShutDown();
             if (a) chat.scrollTop(chat[0].scrollHeight);
             if (chat.children().length >= 512) chat.children().first().remove();
         } else API.chatLog(m.replace(/<br>/g,', '),true);
-    }
-    function ChatPM(user, msg) {
-        if ($('#chat-button').css('display') == 'block') {
-            var chat = $('#chat-messages'), a = chat.scrollTop() > chat[0].scrollHeight - chat.height() - 28,
-            c = !user.indexOf('To: ') ? '-to' : '-from clickable',
-            d = $('#chat-timestamp-button .icon').attr('class').substr(21),
-            e = d == 'off' ? 'none' : 'block',
-            f = new Date().toTimeString().substr(0,5), j = false,
-            k = !user.indexOf('To: ') ? ' message' : ' mention';
-            if (d == '12') {
-                var g = parseInt(f),
-                    h = g >= 12 ? 'pm' : 'am',
-                    i = g%12 == 0 ? '12' : g%12;
-                f = i + f.substr(2) + h;
-            }
-            if (f.charAt(0) == '0') f = f.substr(1);
-            msg = urlFix(_.escape(msg));
-            if (!msg.indexOf('&#x2F;me')) { msg = msg.replace('&#x2F;me','<em>'); j = true; }
-            else if (!msg.indexOf('&#x2F;em')) { msg = msg.replace('&#x2F;em','<em>'); j = true; }
-            j = j ? '' : '&nbsp;';
-            chat.append('<div class="tastyplug-pm' + k + '"><i class="icon icon-ignored"></i><div class="timestamp" style="display:' + e + '">' + f + '</div><span class="from pm' + c + '">' + user + ' </span><span class="text">' + j + msg + '</span></div>');
-            if (a) chat.scrollTop(chat[0].scrollHeight);
-            if (chat.children().length >= 512) chat.children().first().remove();
-        } else API.chatLog('[PM] ' + user + ': ' + msg);
-    }
-    function eta() {
-        tos.eta = setInterval(function(){
-            var pos = API.getWaitListPosition(), str = 'ETA: ';
-            str += pos == -1 ? 'N/A' : getTime(pos*1000*60*(25/6) + API.getTimeRemaining()*1000);
-            $('#waitlist-button').find('.eta').text(str);
-        },10000);
     }
     function resize() {
         var room = $('.room-background'), rpos = room.position(), rwidth = room.width(), rheight = room.height(),
