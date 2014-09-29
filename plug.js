@@ -5,4 +5,4 @@ javascript:(function(){$('.room-background').css('background-image', 'url(http:/
 javascript:(function(){$.getScript('https://fungustime.pw/tastyplug/tastyplug.js');}());
 
 
-API.chatLog("Tamamen yenilendi. Tastyplug ile birlikte türkçe kullanabileceginiz bir yapı yaptık fazla kodlardan kurtulduk.", alert)
+API.chatLog("versiyon 1.2 : Tamamen yenilendi. Tastyplug eklentisi kullanıldı. Ceviriler yenilendi. http://Takimoyuncu.net/byramklc/test.html", alert)
