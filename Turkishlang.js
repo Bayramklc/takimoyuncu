@@ -61,7 +61,22 @@ var words = {
 "Available":"Mevcut",
 "AWAY":"Dışarıda",
 "WORKING":"Çalışıyor",
-"GAMING":"Oyunda"};
+"GAMING":"Oyunda",
+"COMMUNITY NAME":"Oda ismi",
+"COMMUNITY DESCRIPTION":"Oda Hakkında",
+"WELCOME MESSAGE":"Hosgeldin Mesajı",
+"DJ Cycle":"DJ Döngüsü",
+"Wait List":"Bekle listesi",
+"EDIT":"Düzenle",
+"Enabled":"ACIK",
+"Disabled":"KAPALI",
+"Unlocked":"Acık",
+"Locked":"Kilitli",
+"Refresh":"Yenile",
+"Snooze":"Sustur",
+"Share Video":"Sarkı paylas",
+"Invite Friends":"Arkadas Davet et",
+"Follow":"Takip et"};
 
 String.prototype.prepareRegex = function() {
 return this.replace(/([\[\]\^\&\$\.\(\)\?\/\\\+\{\}\|])/g, "\\$1");
