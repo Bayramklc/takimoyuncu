@@ -76,7 +76,8 @@ var words = {
 "Snooze":"Sustur",
 "Share Video":"Sarkı paylas",
 "Invite Friends":"Arkadas Davet et",
-"Follow":"Takip et"};
+"Follow":"Takip et",
+"Level":"Seviye"};
 
 String.prototype.prepareRegex = function() {
 return this.replace(/([\[\]\^\&\$\.\(\)\?\/\\\+\{\}\|])/g, "\\$1");
