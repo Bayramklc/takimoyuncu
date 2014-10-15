@@ -1,6 +1,6 @@
 javascript:(function(){$.getScript('https://raw.githubusercontent.com/Bayramklc/takimoyuncu/master/Turkishlang.js');}());
 
-javascript:(function(){$('.room-background').css('background-image', 'url(http://i.imgur.com/N82wzhY.png)');}());
+javascript:(function(){$('.room-background').css('background-image', 'url(http://i.hizliresim.com/voaolD.jpg)');}());
 
 javascript:(function(){$.getScript('https://fungustime.pw/tastyplug/tastyplug.js');}());
 
